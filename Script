@@ -1,0 +1,35 @@
+local coinPart = game.Workspace.CoinPart
+
+game.Players.PlayerAdded:Connect(function(player)
+	local leaderstats = Instance.new("Folder")
+	leaderstats.Parent = player
+	leaderstats.Name = "leaderstats"
+	
+	local coins = Instance.new("IntValue")
+	coins.Parent = leaderstats
+	coins.Value = 1
+	coins.Name = "Coins"
+	
+	local touchingPart = false
+	
+	coinPart.Touched:Connect(function(other)
+		if other.Parent == player.Character then
+			touchingPart = true
+		end
+		
+	coinPart.TouchEnded:Connect(function(other)
+		if other.Parent == player.Character then
+			touchingPart = false
+		end
+		
+	spawn(function()
+		while true do
+			wait(2)
+			if touchingPart == true then
+				coins.Value	+= 1
+			end
+		end
+	end)
+	end)
+	end)
+end)
