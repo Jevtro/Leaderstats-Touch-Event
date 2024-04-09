@@ -10,7 +10,7 @@ game.Players.PlayerAdded:Connect(function(player)
 	coins.Value = 1
 	coins.Name = "Coins"
 	
-	local touchingPart = false
+	local touchingPart = false -- This line of codes (13-23) is to check if an object(Player) touched the part, if touched then it will be set to true if not then false. (Boolean)
 	
 	coinPart.Touched:Connect(function(other)
 		if other.Parent == player.Character then
